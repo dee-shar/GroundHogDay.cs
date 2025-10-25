@@ -1,0 +1,42 @@
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+namespace GroundHogDayApi
+{
+    public class GroundHogDay
+    {
+        private readonly HttpClient httpClient;
+        private readonly string apiUrl = "https://groundhog-day.com/api/v1";
+        public GroundHogDay()
+        {
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36");
+            httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        public async Task<string> getGroundHogs()
+        {
+            var response = await httpClient.GetAsync($"{apiUrl}/groundhogs");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> getGroundHog(string slug)
+        {
+            var response = await httpClient.GetAsync($"{apiUrl}/groundhog/{slug}");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> getPredictions(int year)
+        {
+            var response = await httpClient.GetAsync($"{apiUrl}/predictions?year={year}");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+    }
+}
