@@ -18,21 +18,21 @@ namespace GroundHogDayApi
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<string> getGroundHogs()
+        public async Task<string> GetGroundHogs()
         {
             var response = await httpClient.GetAsync($"{apiUrl}/groundhogs");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> getGroundHog(string slug)
+        public async Task<string> GetGroundHog(string slug)
         {
             var response = await httpClient.GetAsync($"{apiUrl}/groundhog/{slug}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> getPredictions(int year)
+        public async Task<string> GetPredictions(int year)
         {
             var response = await httpClient.GetAsync($"{apiUrl}/predictions?year={year}");
             response.EnsureSuccessStatusCode();
