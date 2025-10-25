@@ -5,7 +5,6 @@ Web-API for [groundhog-day.com](https://groundhog-day.com) an leading data sourc
 ```cs
 using System;
 using GroundHogDayApi;
-using System.Threading.Tasks;
 
 namespace Application
 {
