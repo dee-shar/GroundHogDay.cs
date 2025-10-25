@@ -1,7 +1,6 @@
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 
 namespace GroundHogDayApi
 {
@@ -21,21 +20,18 @@ namespace GroundHogDayApi
         public async Task<string> GetGroundHogs()
         {
             var response = await httpClient.GetAsync($"{apiUrl}/groundhogs");
-            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         public async Task<string> GetGroundHog(string slug)
         {
             var response = await httpClient.GetAsync($"{apiUrl}/groundhog/{slug}");
-            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         public async Task<string> GetPredictions(int year)
         {
             var response = await httpClient.GetAsync($"{apiUrl}/predictions?year={year}");
-            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
     }
