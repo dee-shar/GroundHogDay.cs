@@ -14,7 +14,7 @@ namespace Application
         static async Task Main()
         {
             var api = new GroundHogDay();
-            string groundHogs = await api.getGroundHogs();
+            string groundHogs = await api.GetGroundHogs();
             Console.WriteLine(groundHogs);
         }
     }
