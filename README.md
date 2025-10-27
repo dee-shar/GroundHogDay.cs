@@ -3,7 +3,6 @@ Web-API for [groundhog-day.com](https://groundhog-day.com) an leading data sourc
 
 ## Example
 ```cs
-using System;
 using GroundHogDayApi;
 
 namespace Application
